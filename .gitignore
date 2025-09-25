@@ -1,0 +1,35 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+
+# VS Code settings
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python logs
+*.log
+
+# Input data files (if any)
+demo_photos/
+
+# Output folders (your OCR/Streamlit outputs)
+output_OCRv5/
+temp_uploads/
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# Optional: secrets/configs
+*.env
+
+

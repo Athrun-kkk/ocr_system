@@ -1,0 +1,4 @@
+paddlepaddle==3.0.0
+paddleocr[all]
+matplotlib
+SQLAlchemy
