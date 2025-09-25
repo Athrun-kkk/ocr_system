@@ -34,3 +34,7 @@ temp_uploads/
 
 # Database files (if any)
 *.db
+
+# Ignore specific files
+ocr_notebook.ipynb
+relational_tables_readme.md

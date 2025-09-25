@@ -5,7 +5,7 @@ import matplotlib.image as mpimg
 import matplotlib.patches as patches
 from datetime import datetime
 from sqlalchemy.orm import Session
-from your_orm_models import Project, Image, OCRText, OCROutput
+from orm_models import Project, Image, OCRText, OCROutput
 
 from matplotlib import rcParams
 rcParams['font.family'] = 'Microsoft YaHei'

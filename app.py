@@ -1,7 +1,7 @@
 import os
 import json
 from paddleocr import PaddleOCR
-from your_helpers import (
+from helpers import (
     create_project,
     register_image,
     save_ocr_texts,
@@ -9,7 +9,7 @@ from your_helpers import (
     update_image_status,
     generate_ocr_overlay
 )
-from your_orm_models import Session, init_db, Image
+from orm_models import Session, init_db, Image
 
 # ------------------------
 # Settings
