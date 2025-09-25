@@ -32,4 +32,5 @@ temp_uploads/
 # Optional: secrets/configs
 *.env
 
-
+# Database files (if any)
+*.db
