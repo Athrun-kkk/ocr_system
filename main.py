@@ -23,11 +23,11 @@ def get_ocr():
     if _OCR_INSTANCE is None:
         _OCR_INSTANCE = PaddleOCR(
             lang="en",
-            text_detection_model_name="PP-OCRv5_server_det",
-            text_recognition_model_name="PP-OCRv5_server_rec",
-            use_doc_orientation_classify=False,
-            use_doc_unwarping=True,
-            use_textline_orientation=True,
+            text_detection_model_dir="./PP-OCRv5_server_det",
+            text_recognition_model_dir="./PP-OCRv5_server_rec",
+            doc_unwarping_model_dir="./UVDoc",
+            textline_orientation_model_dir="./PP-LCNet_x1_0_textline_ori",
+            doc_orientation_classify_model_dir="./PP-LCNet_x1_0_doc_ori"
         )
     return _OCR_INSTANCE
 
