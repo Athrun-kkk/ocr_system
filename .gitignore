@@ -59,3 +59,7 @@ build/
 .coverage
 htmlcov/
 .cache/
+
+# Ignore everything in .github except workflows
+.github/*
+!.github/workflows/
