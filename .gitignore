@@ -22,7 +22,7 @@ Thumbs.db
 # Input data files (if any)
 demo_photos/
 
-# Output folders (your OCR/Streamlit outputs)
+# Output folders (OCR/Streamlit outputs)
 output_OCRv5/
 temp_uploads/
 
@@ -31,17 +31,31 @@ temp_uploads/
 
 # Optional: secrets/configs
 *.env
+secrets.yaml
 
 # Database files (if any)
 *.db
 
-# Model files (if any)
-PP-LCNet_x1_0_doc_ori/
-PP-LCNet_x1_0_textline_ori/
-PP-OCRv5_server_det/
-PP-OCRv5_server_rec/
-UVDoc/
+# Model files (external, not packaged)
+models/
+*.onnx
+*.pdmodel
+*.pdiparams*
+*.nb
 
-# Ignore specific files
+# Ignore project-specific dev files
 ocr_notebook.ipynb
 relational_tables_readme.md
+
+# Build artifacts (Python packaging)
+dist/
+build/
+*.egg-info/
+*.whl
+
+# Cache / test outputs
+*.pytest_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+.cache/

@@ -1,7 +1,7 @@
 import os
 import json
 from paddleocr import PaddleOCR
-from helpers import (
+from ocr_system.helpers import (
     create_project,
     register_image,
     save_ocr_texts,
@@ -9,13 +9,17 @@ from helpers import (
     update_image_status,
     generate_ocr_overlay,
 )
-from orm_models import Session, init_db
+from ocr_system.orm_models import Session, init_db
 
 # ------------------------
 # Global OCR instance (lazy init)
 # ------------------------
 _OCR_INSTANCE = None
 
+def get_model_path(subdir):
+    # Priority: env var, else fallback to ./models
+    base = os.environ.get("OCR_SYSTEM_MODELS", os.path.join(os.getcwd(), "models"))
+    return os.path.join(base, subdir)
 
 def get_ocr():
     """Initialize PaddleOCR once and reuse it."""
@@ -23,14 +27,13 @@ def get_ocr():
     if _OCR_INSTANCE is None:
         _OCR_INSTANCE = PaddleOCR(
             lang="en",
-            text_detection_model_dir="./PP-OCRv5_server_det",
-            text_recognition_model_dir="./PP-OCRv5_server_rec",
-            doc_unwarping_model_dir="./UVDoc",
-            textline_orientation_model_dir="./PP-LCNet_x1_0_textline_ori",
-            doc_orientation_classify_model_dir="./PP-LCNet_x1_0_doc_ori"
+            text_detection_model_dir=get_model_path("PP-OCRv5_server_det"),
+            text_recognition_model_dir=get_model_path("PP-OCRv5_server_rec"),
+            doc_unwarping_model_dir=get_model_path("UVDoc"),
+            textline_orientation_model_dir=get_model_path("PP-LCNet_x1_0_textline_ori"),
+            doc_orientation_classify_model_dir=get_model_path("PP-LCNet_x1_0_doc_ori"),
         )
     return _OCR_INSTANCE
-
 
 def run_ocr_pipeline(input_root, output_root, project_name, pdf_only=True, use_streamlit=False, st=None):
     """
